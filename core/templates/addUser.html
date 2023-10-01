@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+
+        {% extends 'menu.html' %}
+        {% block menu_app %}
+    
+        
+        Cadastrar Usuarios
+        
+
+        <form action="{% url 'salvar_usuario' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="nome" placeholder="Digite o nome" required>
+            <input type="text" name="sobrenome" placeholder="Digite o sobrenome" required>
+            <input type="email" name="email" placeholder="Digite o E-mail" required>
+            
+            <select name='permissao' required>
+              <option value="" disabled selected>Selecione a permissão</option>
+              <option value="Vendedor">Vendedor</option>
+              <option value="Gerente">Gerente</option>
+              <option value="Administrador">Administrator</option>
+            </select>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+
+
+        {% endblock %}
+    </body>
+</html>
